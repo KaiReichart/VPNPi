@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Aktueller VPN-Server</h2>
+<table>
+    <tr>
+      <th>ID</th>
+      <td>{{ currentvpn.id }}</td>
+    </tr>
+    <tr>
+      <th>Filename</th>
+      <td>{{ currentvpn.filename }}</td>
+    </tr>
+    <tr>
+      <th>Netflix</th>
+      <td>{{ currentvpn.netflix }}</td>
+    </tr>
+</table>
+<br>
+<a href="/vpn/vpnNetflix/1" class="waves-effect waves-light btn green">Netflix funktioniert</a>
+<a href="/vpn/vpnNetflix/0" class="waves-effect waves-light btn red">Netflix funktioniert nicht</a>
+
+<h2> Einstellungen </h2>
+
+
+
+
+  <h2> Liste der VPNs </h2>
+
+  <a href="/vpn/changeVPN/random" class="waves-effect waves-light btn">Zufälligen Server wählen</a>
+  <table>
+    <thead>
+      <tr>
+        <th>VPN ID</th>
+        <th>Filename</th>
+        <th>Netflix works</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for key, value in vpnlist.items() %}
+      <tr>
+        <td>{{ value.id }}</td>
+        <td>{{ value.filename }}</td>
+        <td>{{ value.netflix }}</td>
+        <td><a href="/vpn/changeVPN/{{ key }}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

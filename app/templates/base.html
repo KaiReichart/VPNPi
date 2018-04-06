@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/materialize.min.css') }}">
+  <script src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {% if title %}
+  <title>{{ title }} - VPNPi</title>
+  {% else %}
+  <title>Kais VPNPi</title>
+  {% endif %}
+</head>
+
+<body>
+  <div class="navbar-fixed ">
+    <nav>
+      <div class="nav-wrapper teal lighten-1">
+        <ul id="nav-mobile" class="right">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/vpn">VPNs</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+
+</html>
