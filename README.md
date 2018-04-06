@@ -40,3 +40,29 @@
 Access the Webpage from your Browser
 
 -> [IP-Adress / localhost]:[Port]
+
+## Setup on Raspberry Pi
+
+### Allow Connections from LAN
+
+**run this in Terminal**
+``` bash
+  $ iptables -I INPUT -p tcp --dport 5000 -j ACCEPT
+```
+
+**in VPNPi.py**
+```python
+  app.run(host="0.0.0.0", port=5000)
+```
+### make App run after reboot
+
+** Terminal **
+```bash
+$ crontab -e
+```
+
+**add this to the File**
+```
+  @reboot cd /etc/VPNPi; python3 VPNPi.py > log.txt 2> error.txt; cd
+  */15 * * * * sudo service openvpn restart
+```
