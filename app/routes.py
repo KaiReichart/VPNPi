@@ -93,3 +93,7 @@ def log():
     with open('error.txt') as f:
         log = f.read()
     return log
+
+@app.route('/reboot')
+def reboot():
+    os.system('sudo reboot')
