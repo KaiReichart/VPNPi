@@ -87,6 +87,12 @@ def resetList():
 
 
     return redirect("/vpn")
+    
+@app.route('/vpn/resetConnection')
+def resetConnection():
+    os.system('sudo service openvpn restart')
+    return redirect("/vpn")
+
 
 @app.route('/log')
 def log():

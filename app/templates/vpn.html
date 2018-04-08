@@ -17,6 +17,7 @@
 <br>
 <a href="/vpn/vpnNetflix/1" class="waves-effect waves-light btn green">Netflix funktioniert</a>
 <a href="/vpn/vpnNetflix/0" class="waves-effect waves-light btn red">Netflix funktioniert nicht</a>
+<a href="/vpn/resetConnection" class="waves-effect waves-light btn orange">Reset Connection</a>
 
 <h2> Einstellungen </h2>
 
@@ -26,7 +27,7 @@
 <h2> Liste der VPNs </h2>
 
 <a href="/vpn/changeVPN/random" class="waves-effect waves-light btn">Zufälligen Server wählen</a>
-<table>
+<table id="VPNTable" class="display">
   <thead>
     <tr>
       <th>VPN ID</th>
@@ -57,6 +58,9 @@
         }
       });
     });
+
+    $('#VPNTable').DataTable();
+
   });
 </script>
 {% endblock %}
