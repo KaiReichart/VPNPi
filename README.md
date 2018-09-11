@@ -45,9 +45,16 @@ Access the Webpage from your Browser
 
 ### Allow Connections from LAN
 
-**run this in Terminal**
-``` bash
-  $ iptables -I INPUT -p tcp --dport 5000 -j ACCEPT
+**Route Traffic from Ethernet through VPN**
+```bash
+  $ sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
+  $ sudo iptables -A FORWARD -i tun0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  $ sudo iptables -A FORWARD -i wlan0 -o tun0 -j ACCEPT
+```
+
+**Save Routes after Reboot**
+```bash
+  $ sudo apt-get install iptables-persistent
 ```
 
 **in VPNPi.py**
